@@ -1,0 +1,14 @@
+.inbox-info
+{
+    padding:0rem 2rem;
+}
+.border-bottom
+{
+    background: #17A2B8;
+    color:#fff;
+}
+input[type=checkbox], input[type=radio]
+{
+    width:18px;
+    height:18px;
+}

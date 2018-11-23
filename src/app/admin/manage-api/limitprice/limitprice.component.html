@@ -1,0 +1,102 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <aside>
+        <form [formGroup]="limitPriceForm" (ngSubmit)="onSubmit()">
+            <section class="content-header pad-lr10 pt-2 dept-header">
+                <div class="">
+                    <div class="col-8 col-md-8 mar-b5">
+                        <h6 class="mt-2 mb-2">
+                            Set Default Pricing & API Usage limits {{data|json}}
+                        </h6>
+
+                        <!-- search form -->
+
+                        <div class="search__container">
+
+                            <input class="search__input" type="text" placeholder="Search" formControlName="searchText">
+                        </div>
+
+                        <!-- /.search form -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main content -->
+            <section class="content ">
+                <!-- Small boxes (Stat box) -->
+                <div class="table-responsive">
+                    <div class="row border-bottom list-header">
+                        <div class="col-sm-4 ">Application/Services</div>
+                        <div class="col-sm-2  ">Free Hits</div>
+                        <div class="col-sm-2 ">Price/API Hit <span class="font-13">(in RS)</span></div>
+                        <div class="col-sm-2 ">Day/Month</div>
+                        <div class="col-sm-2 ">API Hit Limit</div>
+
+                    </div><!-- ./col -->
+                    <div *ngFor="let item of data">
+                        <div class="data-list ">
+                            <div class="row col-12 list-data tree-heading">
+                                <div class="col-sm-4">
+                                    <strong><i class="fa fa-minus-square-o" aria-hidden="true"></i> &nbsp;
+                                        {{item.department}}</strong></div>
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2 "></div>
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-2"></div>
+                            </div><!-- ./col -->
+
+                            <div *ngFor="let service of item.services| customApiManagerFilter : {name:limitPriceForm.get('searchText').value}; let j = index;">
+
+                                <div formArrayName="itemRows" *ngFor="let item of limitPriceForm.get('itemRows').controls; let i = index;">
+                                    <div [formGroupName]="i" class="row subtree-details  list-data">
+                                        <div class="col-sm-4 pl-5 ">{{service.name}} </div>
+                                        <div class="col-sm-2">
+                                            <div class="">
+                                                <input type="text" placeholder="Free Hit" class="form-last-name form-control form-field"
+                                                    value="{{service.ApiVersion[0].freeHits}}" formControlName="freeHits"
+                                                    maxlength="8">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 ">
+                                            <div class="">
+                                                <input type="text" placeholder="Price/Api Hit" class="form-last-name form-control form-field"
+                                                    value="{{service.ApiVersion[0].prices}}" formControlName="prices"
+                                                    maxlength="8">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <select class="form-field form-control" formControlName="freeHitsUnit_day_month">
+                                                <option value="">select Day/Month</option>
+                                                <option value="day" [selected]="service.ApiVersion[0].freeHitsUnit_day_month.toLowerCase()=='day'">Day</option>
+                                                <option value="month" [selected]="service.ApiVersion[0].freeHitsUnit_day_month.toLowerCase()=='month'">Month</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <select class="form-field form-control" formControlName="freeHitsUnit_limit">
+                                                <option value="">select limit</option>
+                                                <option value="100" [selected]="service.ApiVersion[0].freeHitsUnit_limit=='100'">100</option>
+                                                <option value="1000" [selected]="service.ApiVersion[0].freeHitsUnit_limit=='1000'">1000</option>
+                                                <option value="10000" [selected]="service.ApiVersion[0].freeHitsUnit_limit=='10000'">10000</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- ./col -->
+                        </div>
+                    </div>
+                </div>
+                <div class="container text-center  pt-3 pb-3">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 "> <button type="reset" class="btn btn-danger btn-sm">Cancel</button>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6"> <button type="submit" class="btn btn-success btn-sm">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </section><!-- /.content -->
+        </form>
+    </aside><!-- /.right-side ends -->
+</div><!-- ./wrapper -->

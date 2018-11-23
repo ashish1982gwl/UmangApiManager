@@ -1,0 +1,154 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en" style="
+    height: 100% !important">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API Manager</title>
+
+    <!-- CSS -->
+    <link rel="shortcut icon" href="assets/images/umang_logo.png" />
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        html, body{
+    height: 100% !important;
+}
+</style>
+
+</head>
+
+<body style="height:100%">
+    <div *ngIf="lodingFlag">
+        <img src="assets/images/loading.gif" style="width:300px;" />
+    </div>
+    <!-- Top content -->
+    <div *ngIf="!lodingFlag" class="top-content relative" style="background: url(assets/images/2.png) !important;">
+        <!-- Top menu -->
+        <nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg header-menu-bg ">
+            <div class="container">
+                <a class="navbar-brand no-padding" href="index.html">
+                    <img src="assets/images/umang_logo.png" style="width:40px;" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item login-btn">
+                            <a class="scroll-link nav-link pad-3" routerLink="/register">REGISTER</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-12 text">
+                        <h1 class="wow fadeInLeftBig animated" style="visibility: visible; animation-name: fadeInLeftBig;">
+                            <strong>UMANG</strong>
+                        </h1>
+                        <div class="description wow fadeInLeftBig animated" style="visibility: visible; animation-name: fadeInLeftBig;">
+                            <p>Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                                been
+                                the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                                galley
+                                of type and scrambled it to make a type specimen book.
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 col-sm-12 form-box wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp;">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Sign up now</h3>
+                                <p>Fill in the form below to get instant access:</p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-bottom">
+                            <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && submitLoginFrom()">
+
+                                <div class="form-group relative">
+                                    <label class="sr-only" for="form-first-name">User Name</label>
+                                    <input type="text" formControlName="email" placeholder="Email address" [ngClass]="(loginForm.controls['email'].errors)?'closeicon-button form-control invalid-data':'okicon-button form-control invalid-data'"
+                                        maxlength="30">
+
+                                    <button *ngIf="(loginForm.controls['email'].errors &&  (loginForm.controls['email'].touched||loginForm.controls['email'].dirty))"
+                                        class="close-icon" type="reset"></button>
+                                    <button *ngIf="(!loginForm.controls['email'].errors &&  (loginForm.controls['email'].touched||loginForm.controls['email'].dirty))"
+                                        class="ok-icon" type="reset"></button>
+
+                                    <div class="alert alert-danger" *ngIf="loginForm.controls['email'].errors?.required   &&  loginForm.controls['email'].touched">Please
+                                        enter valid email Id</div>
+                                    <div class="alert alert-danger" *ngIf="loginForm.controls['email'].errors?.minlength  && loginForm.controls['email'].touched">
+                                        Email ID can't less than 4 digit</div>
+                                    <div class="alert alert-danger" *ngIf="loginForm.controls['email'].errors?.email  && loginForm.controls['email'].touched">Please
+                                        enter valid email id</div>
+                                    <div class="alert alert-danger" *ngIf="loginForm.controls['email'].errors?.maxlength  && loginForm.controls['email'].touched">
+                                        Email ID can't greater than 20 digit</div>
+
+                                </div>
+
+                                <div class="form-group relative">
+                                    <label class="sr-only" for="form-last-name">Password</label>
+
+                                    <input type="password" formControlName="password" placeholder="password" [ngClass]="(loginForm.controls['password'].errors)?'closeicon-button form-control invalid-data':'okicon-button form-control invalid-data'"
+                                        maxlength="30">
+                                    <button *ngIf="(loginForm.controls['password'].errors &&  (loginForm.controls['password'].touched||loginForm.controls['password'].dirty))"
+                                        class="close-icon" type="reset"></button>
+                                    <button *ngIf="(!loginForm.controls['password'].errors &&  (loginForm.controls['password'].touched||loginForm.controls['password'].dirty))"
+                                        class="ok-icon" type="reset"></button>
+
+                                    <div class="alert alert-danger" *ngIf="loginForm.controls['password'].errors?.required   &&  loginForm.controls['password'].touched">
+                                        Please enter valid password </div>
+                                    <div class="alert alert-danger" *ngIf="loginForm.controls['password'].errors?.minlength  && loginForm.controls['password'].touched">
+                                        password can't less than 4 digit</div>
+                                    <div class="alert alert-danger" *ngIf="loginForm.controls['password'].errors?.maxlength  && loginForm.controls['password'].touched">
+                                        password can't greater than 20 digit</div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <button type="submit" [disabled]=loginForm.invalid class="btn btn-primary pad-tb5">
+                                            Sign me up!</button>
+                                    </div>
+
+                                    <div class="form-group col-md-6 text-right">
+                                        <a href="" class="pad-tb10 font-16">
+                                            Forgot Password?</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer-position">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-12 footer-copyright">
+                        UMANG API Manager
+                        <br />© NeGD 2018
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+
+</html>

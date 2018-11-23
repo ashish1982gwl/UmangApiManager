@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        API Manager
+    </title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="assets/images/umang_logo.png" />
+</head>
+
+<body class="skin-black">
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+        <aside class="left-side sidebar-offcanvas" >
+
+            <div class="sidebar">
+                <ul class="sidebar-menu">
+                    <li [ngClass]="(linkCss === 'Default')?'active':'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-42'">
+
+                        <a (click)="linkClickAction('Default')" [routerLink]="['Default']">
+                            <i class="fa fa-th-large mr-3 font-22" aria-hidden="true"></i>
+                            <span>DashBoard</span>
+                        </a>
+                    </li>
+                    <li [ngClass]="(linkCss === 'inbox')?'active':'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-42'">
+                        <a (click)="linkClickAction('inbox')" [routerLink]="['inbox/InboxList']">
+                            <i class="fa fa-inbox mr-3  font-22" aria-hidden="true"></i>
+                            <span>Inbox</span>
+
+                        </a>
+                    </li>
+                    <li [ngClass]="(linkCss === 'manageApi')?'active':'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-42'">
+                        <a (click)="linkClickAction('manageApi')" [routerLink]="['manageApi/ApiList']">
+                            <i class="fa fa-key mr-3 font-22" aria-hidden="true"></i>
+                            <span>Manage API's</span>
+                        </a>
+                    </li>
+                    <li [ngClass]="(linkCss === 'manageVendor')?'active':'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-42'">
+                        <a (click)="linkClickAction('manageVendor')" [routerLink]="['manageVendor/VendorList']">
+                            <i class="fa fa-user-circle mr-3 font-22" aria-hidden="true"></i>
+                            <span>Manage Vendors</span>
+                        </a>
+                    </li>
+                    <li [ngClass]="(linkCss === 'manageVendor')?'active':'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-42'">
+                        <a (click)="linkClickAction('manageVendor')" [routerLink]="['/Logout']">
+                            <i class="fa fa-sign-out mr-3 font-22" aria-hidden="true"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+        <aside class="right-side">
+            <router-outlet></router-outlet>
+        </aside>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,131 @@
+body{
+    height: 100% !important;
+    background: #efefef;
+}
+
+.checkbox {
+    padding-left: 20px;
+  }
+  .checkbox label {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    padding-left: 5px;
+  }
+  .checkbox label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 0;
+    margin-left: -20px;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background-color: #fff;
+    -webkit-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    -o-transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    transition: border 0.15s ease-in-out, color 0.15s ease-in-out;
+    top:-10px
+  }
+  .checkbox label::after {
+    display: inline-block;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    left: 0;
+    top: -12px;
+    margin-left: -20px;
+    padding-left: 3px;
+    padding-top: 1px;
+    font-size: 11px;
+    color: #555555;
+  }
+  .checkbox input[type="checkbox"],
+  .checkbox input[type="radio"] {
+    opacity: 0;
+    z-index: 1;
+  }
+ 
+  .checkbox input[type="checkbox"]:checked + label::after,
+  .checkbox input[type="radio"]:checked + label::after {
+    font-family: "FontAwesome";
+    content: "\f00c";
+  }
+  
+  .checkbox.checkbox-circle label::before {
+    border-radius: 50%;
+  }
+
+
+
+  .checkbox-info input[type="checkbox"]:checked + label::before,
+  .checkbox-info input[type="radio"]:checked + label::before {
+    background-color: #5bc0de;
+    border-color: #5bc0de;
+  }
+  .checkbox-info input[type="checkbox"]:checked + label::after,
+  .checkbox-info input[type="radio"]:checked + label::after {
+    color: #fff;
+  }
+  .list-header{
+    background: #325370;
+    color: #fff;
+    padding: 3px;
+  }
+  .list-data
+  {
+      background: #ffffff;
+      padding: 4px;
+      border: 1px solid #cfd3cd;
+      font-size:15px;
+    
+      
+  }
+  .font-16
+  {
+      font-size: 16px;
+   
+
+  }
+  .fa-plus-square-o, .fa-minus-square-o
+  {
+      color: #138496;
+      font-size: 18px;
+  }
+  .pad-l85
+  {
+      padding-left: 85px;
+  }
+  .api-data
+  {
+  
+      overflow-y:auto;
+      overflow-x: hidden
+  }
+  .font-18
+  {
+      font-size: 18px;
+      padding: 4px 0px 4px  0px
+  }
+  .data-list
+  {
+   height: 330px;
+    overflow-y:scroll;
+    overflow-x: hidden
+  }
+  .font-24
+  {
+    font-size: 24px;
+  }
+  .fav-position
+  {
+    position: absolute;
+    top:4px;
+    color: #00599D
+  }
+  .bg-green
+{
+  background: #edfff0 !important;
+  color:rgb(125, 124, 124) !important;
+}

@@ -1,0 +1,39 @@
+input[type=checkbox], input[type=radio]
+{
+    width:18px;
+    height:18px;
+    vertical-align: middle;
+}
+.table{
+    margin-bottom: 0px;
+    padding: 0px 20px;
+    overflow: scroll;
+}
+.table td
+{
+
+    padding: 3px 10px 3px 20px; 
+}
+.table th
+{
+
+    padding: 5px 10px 5px 20px; 
+    background: #F9F9F9 !important;
+    border-top: 0px;
+}
+.inbox-table
+{
+   height: 400px;
+    overflow-y: scroll;
+ 
+  
+}
+body{
+    background: #fff !important;
+}
+.inbox-heading
+{
+    font-size: 24px;
+    font-weight: 600;
+    padding: 0px 25px
+}

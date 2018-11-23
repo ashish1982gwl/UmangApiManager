@@ -1,0 +1,21 @@
+.active-tab
+{
+    background: #00599D;
+    padding: 5px 0px;
+    color: #fff;
+border-right: 1px solid #fefefe
+}
+.active-tab a{
+    color: #fff !important
+}
+a{
+    color: #00599D !important
+}
+ul.navbar-nav li {
+    border-right: .5px solid #e6e6e6;
+   
+}
+ul.navbar-nav li:last-child
+{
+    border-right: 0px
+}

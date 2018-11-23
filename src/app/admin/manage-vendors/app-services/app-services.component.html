@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-md bg-light mt-2">
+    <ul id="menu-main-nav" class="navbar-nav nav-fill w-100">
+        <li id="menu-item-42" [ngClass]="(linkCss === 'ServiceList')?'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-963 active-tab':'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-42'">
+            <a [routerLink]="['ServiceList']" (click)="linkClickAction('ServiceList')">
+                <i class="fa fa-dashboard"></i> &nbsp;
+                <span>App & Services </span>
+            </a>
+        </li>
+       
+        <li id="menu-item-42" [ngClass]="(linkCss === 'UsageReport')?'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-963 active-tab':'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-42'">
+            <a [routerLink]="['UsageReport']" (click)="linkClickAction('UsageReport')">
+                <i class="fa fa-dashboard"></i> &nbsp;
+                <span>Usage</span>
+            </a>
+        </li>
+        <li id="menu-item-42" [ngClass]="(linkCss === 'Pricing')?'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-963 active-tab':'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-42'">
+                <a [routerLink]="['Pricing']" (click)="linkClickAction('Pricing')">
+                        <i class="fa fa-inr" aria-hidden="true"></i> &nbsp;
+                    <span>Limits & Pricing</span>
+                </a>
+            </li>
+        <li id="menu-item-42" [ngClass]="(linkCss === 'Invoice')?'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-963 active-tab':'nav-item menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-6 current_page_item menu-item-42'">
+            <a [routerLink]="['Invoice']" (click)="linkClickAction('Invoice')">
+                <i class="fa fa-dashboard"></i> &nbsp;
+                <span>Invoice</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="">
+    
+        <router-outlet></router-outlet>
+   
+</div>

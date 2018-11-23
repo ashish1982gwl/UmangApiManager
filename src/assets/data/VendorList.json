@@ -1,0 +1,23 @@
+[
+    {
+        "vendorId": "1",
+        "vendorName": "Paytm",
+        "ApplicationServices": "3/10",
+        "status": "Active",
+        "RegisteredDate": "24/10/2018"
+    },
+    {
+        "vendorId": "2",
+        "vendorName": "MovieQucik",
+        "ApplicationServices": "4/10",
+        "status": "Unblocked",
+        "RegisteredDate": "25/10/2018"
+    },
+    {
+        "vendorId": "3",
+        "vendorName": "snap deal",
+        "ApplicationServices": "3/10",
+        "status": "blocked",
+        "RegisteredDate": "24/10/2018"
+    }
+]

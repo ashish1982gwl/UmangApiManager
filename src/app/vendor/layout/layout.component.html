@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        API Manager
+    </title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="assets/images/umang_logo.png" />
+</head>
+
+<body class="skin-black">
+    <div class="wrapper row-offcanvas row-offcanvas-left">
+        <aside class="left-side sidebar-offcanvas">
+
+            <section class="sidebar">
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        
+                        <a [routerLink]="['myApp']">
+                            <i class="fa fa-dashboard"></i>
+                            <span>My App</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a [routerLink]="['report']">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span>Reports</span>
+
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a [routerLink]="['alert']">
+                            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                            <span>Alerts</span>
+                        </a>
+                    </li>
+                    <li class="treeview">
+                        <a [routerLink]="['profile']">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span>My Profile</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <aside class="right-side">
+           <router-outlet></router-outlet>
+        </aside>
+    </div>
+
+
+</body>
+
+</html>

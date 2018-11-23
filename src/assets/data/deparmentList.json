@@ -1,0 +1,53 @@
+[
+    {
+        "departmentId": "1",
+        "departmentName": "CBSC",
+        "departmentImageUrl": "http://localhost:4200/assets/images/KV.png"
+    },
+    {
+        "departmentId": "2",
+        "departmentName": "vahan1",
+        "departmentImageUrl": "http://localhost:4200/assets/images/vahan1.png"
+    },
+     {
+        "departmentId": "3",
+        "departmentName": "kisan Suvidha",
+        "departmentImageUrl": "http://localhost:4200/assets/images/kisan_suvidha_home_page.png"
+    },
+    {
+        "departmentId": "4",
+        "departmentName": "EPFO",
+        "departmentImageUrl": "http://localhost:4200/assets/images/epfo.png"
+    },
+    {
+        "departmentId": "1",
+        "departmentName": "CBSC",
+        "departmentImageUrl": "http://localhost:4200/assets/images/KV.png"
+    },
+    {
+        "departmentId": "2",
+        "departmentName": "vahan1",
+        "departmentImageUrl": "http://localhost:4200/assets/images/vahan1.png"
+    },
+     {
+        "departmentId": "3",
+        "departmentName": "kisan Suvidha",
+        "departmentImageUrl": "http://localhost:4200/assets/images/kisan_suvidha_home_page.png"
+    },
+    {
+        "departmentId": "4",
+        "departmentName": "EPFO",
+        "departmentImageUrl": "http://localhost:4200/assets/images/epfo.png"
+    },
+    {
+        "departmentId": "1",
+        "departmentName": "CBSC",
+        "departmentImageUrl": "http://localhost:4200/assets/images/KV.png"
+    },
+    {
+        "departmentId": "2",
+        "departmentName": "vahan1",
+        "departmentImageUrl": "http://localhost:4200/assets/images/vahan1.png"
+    }
+    
+]

@@ -1,0 +1,23 @@
+.no-padding
+{
+    padding: 0px;
+}
+.active-tab
+{
+    background: #00599D;
+    padding: 5px 0px;
+    color: #fff;
+border-right: 1px solid #fefefe
+}
+.active-tab a{
+    color: #fff !important
+}
+a{
+    color: #00599D;
+    font-weight: 600
+}
+.tab-menu li
+{
+    border: 1px solid #00599D;
+    padding:5px 0px
+}

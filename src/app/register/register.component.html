@@ -1,0 +1,246 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>API Manager</title>
+
+    <!-- CSS -->
+    <link rel="shortcut icon" href="../../assets/images/umang_logo.png" />
+    <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+
+<body>
+    <div class="mar-b10 wrapper">
+        <!-- Top content -->
+        <div class="top-content height-50" style="background: url(../../assets/images/2.jpg) !important;">
+
+            <!-- Top menu -->
+            <nav class="navbar navbar-dark fixed-top navbar-expand-md navbar-no-bg header-menu-bg ">
+                <div class="container">
+                    <a class="navbar-brand no-padding" href="index.html">
+                        <img src="../../assets/images/umang_logo.png" style="width:40px;" />
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+
+
+                            <li class="nav-item login-btn">
+                                <a class="scroll-link nav-link pading-login" routerLink="/login">LOGIN</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 text no-padding">
+                            <h1 class="wow fadeInLeftBig animated" style="visibility: visible; animation-name: fadeInLeftBig;">
+                                <strong>UMANG</strong>
+                            </h1>
+                            <div class="description wow fadeInLeftBig animated" style="visibility: visible; animation-name: fadeInLeftBig;">
+                                <p>
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                    text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                                    it to make a type specimen book.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="d-flex justify-content-center col-md-12 register-container">
+        <section class="col-md-6 no-padding">
+                <div class="form-heading">Registration</div>
+        <div class="container">
+            <form [formGroup]="registerForm">
+                
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" (click)="tabFunction('BasicDetails')">Basic Details</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" (click)="tabFunction('ContactDetails')">Contact Details</a>
+                    </li>
+
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div id="BasicDetails" [hidden]="!tabValue" class="container tab-pane active">
+                       
+                        <div class="row">
+                           
+                            <div class="form-bottom col-md-12 col align-self-center">
+                                  
+                                <div class="form-group row" >
+                                        <label class="col-md-4">Department</label>
+                                        <div class="col-md-8">
+                                    <input type="text" class="form-first-name form-field" placeholder="Company Name" formControlName="companyname" class="form-first-name form-field form-control"
+                                        [ngClass]="{
+                                        'has-danger': registerForm.get('companyname').invalid && (registerForm.get('companyname').dirty || registerForm.get('companyname').touched),
+                                        'has-success': registerForm.get('companyname').valid && (registerForm.get('companyname').dirty || registerForm.get('companyname').touched)
+                                      }">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Requester Name</label>
+                                    <div class="col-md-8">
+                                    <input type="password" formControlName="RequesterName" placeholder="Requester Name" class="form-last-name form-control form-field">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Designation</label>
+                                    <div class="col-md-8">
+                                    <select class="form-field form-control" formControlName="Designation">
+                                        <option value="test">Designation</option>
+                                        <option value="test">test</option>
+
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Email Id</label>
+                                    <div class="col-md-8">
+                                    <input type="email" formControlName="OfficialEmailID" placeholder="Official Email Id" class="form-last-name form-control form-field">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Mobile Number</label>
+                                    <div class="col-md-8">
+                                    <input type="number" formControlName="MobileNumber" placeholder="Mobile Number" class="form-last-name form-control form-field">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Purpose of Service</label>
+                                    <div class="col-md-8">
+                                    <select class="form-field form-control" formControlName="PurposeOfservice">
+                                        <option value="test">Purpose of Service</option>
+                                        <option value="test">test</option>
+
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Organisation Type</label>
+                                    <div class="col-md-8">
+                                    <select class="form-field form-control" formControlName="OrganisationType">
+                                        <option value="test">Organisation Type</option>
+                                        <option value="test">test</option>
+
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Paid Services?</label>
+                                    <div class="col-md-8">
+                                    <select class="form-field form-control" formControlName="PaidService">
+                                        <option value="test">Paid Services?</option>
+                                        <option value="test">test</option>
+
+                                    </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Staging IP Address</label>
+                                    <div class="col-md-8">
+                                    <input type="number" formControlName="ProductionIPaddress" placeholder="Staging IP Address" class="form-last-name form-control form-field">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Production IP Address</label>
+                                    <div class="col-md-8">
+                                    <input type="number" formControlName="StagingIpAddress" placeholder="Production IP Address" class="form-last-name form-control form-field">
+                                </div>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-primary pull-right">Next</button>
+
+
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div id="ContactDetails" [hidden]="tabValue" class="container tab-pane active">
+                        
+                        <div class="row">
+                               
+
+                            <div class="form-bottom col-md-12 col-md-offset-3 centered">
+
+                                    <div class="fun-heading">Functional SPOC</div>
+                                <div class="form-group row">
+                                    
+                                    <label class="col-md-4">Functional Name</label>
+                                    <div class="col-md-8">
+                                    <input type="text" formControlName="FunctioanlSpocName" placeholder=" Name" class="form-first-name form-field form-control">
+                               </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Email Id</label>
+                                    <div class="col-md-8">
+                                    <input type="email" formControlName="FunctioanlSpocEmailId" placeholder="Official Email Id" class="form-last-name form-control form-field">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Mobile Number</label>
+                                    <div class="col-md-8">
+                                    <input type="number" formControlName="FunctioanlMobileNumber" placeholder="Mobile Number" class="form-last-name form-control form-field">
+                                </div>
+                                </div>
+                                <div class="fun-heading">Technical SPOC</div>
+                                <div class="form-group row">
+                                    
+                                    <label class="col-md-4"> Name</label>
+                                    <div class="col-md-8">
+                                    <input type="text" formControlName="TechSpocName" placeholder=" Name" class="form-first-name form-field form-control">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Email Id</label>
+                                    <div class="col-md-8">
+                                    <input type="email" formControlName="TechSpocEmailId" placeholder="Official Email Id" class="form-last-name form-control form-field">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-md-4">Mobile Number</label>
+                                    <div class="col-md-8">
+                                    <input type="number" formControlName="TechopsMobileNumber" placeholder="Mobile Number" class="form-last-name form-control form-field">
+                                </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary btn-sm pull-right text-center">Register</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+    </div>
+    <!-- Javascript -->
+
+
+
+
+
+</body>
+
+</html>

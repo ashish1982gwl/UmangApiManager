@@ -1,0 +1,102 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+
+    <!-- Right side column. Contains the navbar and content of the page -->
+    <aside>
+        <form name="list" class="sidebar-form" (ngSubmit)="onSubmit()" #addMountForm="ngForm">
+  
+            <section class="content-header pad-lr10 pt-2 dept-header">
+                <div class="">
+                    <div class="col-8 col-md-8 mar-b5">
+                        <h6 class="mt-2 mb-2">
+
+                            API Versions uploaded for the applications/services
+                         
+                        </h6>
+
+                        <!-- search form -->
+                        <div class="search__container">
+      
+                                <input class="search__input" type="text" placeholder="Search" name ="searchText" [(ngModel)]="searchText">
+                            </div>
+                    
+                        <!-- /.search form -->
+                    </div>
+
+                </div>
+
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Small boxes (Stat box) -->
+                <div class="table-responsive">
+                    <div class="row border-bottom list-header">
+                        <div class="col-sm-3">Application/Services</div>
+
+                        <div class="col-sm-3">Staging <span class="font-13">( Version & Date )</span></div>
+                        <div class="col-sm-3 ">Production <span class="font-13">( API Version & Date )</span></div>
+                        <div class="col-sm-3 text-center">Expiring On</div>
+
+                    </div>
+                    <div *ngFor="let item of data">
+                        <div class="data-list">
+                            <div class=" list-data tree-heading">
+                                    <div class="col-12 row ">
+                                <div class="col-sm-3 "><strong>
+                                        <i class="fa fa-minus-square-o pointer" aria-hidden="true"></i>
+                                        &nbsp;{{item.department}}</strong></div>
+                                <div class="col-sm-3 "></div>
+                                <div class="col-sm-3 "></div>
+                                <div class="col-sm-3 text-center"></div>
+                                </div>
+                            </div>
+                            <div *ngFor="let service of item.services| customApiManagerFilter:{name:searchText}">
+                                <div class="row list-data subtree-details">
+                                    <div class="col-sm-3 pl-5 ">
+                                        <strong><i (click)="toggle(service,$event)" class="fa fa-plus-square-o pointer"
+                                                aria-hidden="true"></i>
+                                            &nbsp; {{service.name}}</strong></div>
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-3"></div>
+                                </div>
+                                <div *ngIf="service.isShow==true">
+                                    <div *ngFor="let serviceVesrion of service.ApiVersion" class="row list-data subtree-details">
+                                        <div class="col-sm-3 "></div>
+                                        <div class="col-sm-3"> <i class="fa fa-eye" aria-hidden="true"></i>
+                                            {{serviceVesrion.version}}</div>
+                                        <div class="col-sm-3 "><i class="fa fa-eye" aria-hidden="true"></i>
+                                            {{serviceVesrion.version}}</div>
+
+                                        <div class="col-sm-3 text-center">
+                                            <my-date-picker name="{{serviceVesrion.id}}" [options]="myDatePickerOptions" [(ngModel)]="serviceVesrion.expDate"></my-date-picker>
+                                           <!-- <i class="fa fa-pencil" aria-hidden="true"></i>-->
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="container text-center pt-3 pb-3">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 "> <button type="reset" class="btn btn-danger btn-sm">Cancel</button>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6"> <button type="submit" class="btn btn-success btn-sm" >Save</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </section>
+
+
+        </form>
+    </aside>
+</div>

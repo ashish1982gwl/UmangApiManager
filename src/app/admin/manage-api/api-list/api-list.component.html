@@ -1,0 +1,105 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+
+    <aside>
+
+        <form [formGroup]="apiListForm" class="sidebar-form">
+
+            <section class="content-header pad-lr10 pt-1 dept-header">
+
+                <div class="row">
+                    <div class="col-8 col-md-8 mar-b5 ml-2">
+                        <div class="page-title">
+                            Manage APIs
+                         
+                        </div>
+
+                        <div class="search__container">
+
+                            <input class="search__input" type="text" placeholder="Search" formControlName="SearchText">
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <!-- Small boxes (Stat box) -->
+                <div class=" table-responsive">
+                    <div class="row border-bottom list-header ">
+                        <div class="col-sm-3 ">Application/Services</div>
+                        <div class="col-sm-3 ">Status</div>
+                        <div class="col-sm-2 ">Staging API</div>
+                        <div class="col-sm-2 ">Production API</div>
+                        <div class="col-sm-2 ">Block/Unblock</div>
+
+                    </div>
+
+                    <div class="data-list pl-3 api-data">
+                        <div>
+                            <div class="row list-data" *ngFor="let item of data |departmentServicFilter:apiListForm.get('SearchText').value">
+                                <div class="col-12 row tree-heading">
+                                    <div class="col-sm-3 ">
+                                        <strong>
+                                            
+                                            <i [ngClass]="(item.isShow==true)?'fa fa-minus-square-o':'fa fa-plus-square-o'"
+                                                aria-hidden="true" (click)="toggle(item,$event)" class="pointer"></i>
+                                            &nbsp;
+                                            <a (click)="goAppServicesPage(item.department)" class="pointer">
+                                                {{item.department}}</a> </strong>
+                                    </div>
+                                    <div class="col-sm-3 ">Live</div>
+                                    <div class="col-sm-2 ">
+                                    </div>
+                                    <div class="col-sm-2 ">
+
+                                    </div>
+                                    <div class="col-sm-2 text-center">
+                                            <i class="fa fa-check-circle-o green-icn font-22" aria-hidden="true"></i> &nbsp; &nbsp;
+                                        <i class="fa fa-ban text-warning font-22" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                                <div *ngFor="let service of item.services" class="col-sm-12 ">
+                                    <div *ngIf="item.isShow==true">
+                                        <div class="row  list-data subtree-details">
+                                            <div class="col-sm-3 pl-5 ">{{service.name}} </div>
+                                            <div class="col-sm-3 "></div>
+                                            <div class="col-sm-2  ">
+                                                <i class="fa fa-file-pdf-o blue tooltip1 " aria-hidden="true"> <span class="tooltiptext">View and Download</span></i> {{service.version}}
+                                            </div>
+                                            <div class="col-sm-2 ">
+                                                <i class="fa fa-file-pdf-o blue tooltip1" aria-hidden="true" title="view and download"><span class="tooltiptext">View and Download</span></i> {{service.version}}
+                                            </div>
+                                            <div class="col-sm-2 text-center">
+                                                <i class="fa fa-ban text-warning font-16" aria-hidden="true"></i>
+                                              
+                                                {{service.status}}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container text-center  pt-3 pb-3">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> <button type="reset" class="btn btn-danger btn-sm">Cancel</button>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> <button type="button" class="btn btn-primary btn-sm">Reset
+                                All Apps</button> </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> <button type="button" class="btn btn-success btn-sm">Assign
+                                Apps</button> </div>
+                    </div>
+                </div>
+
+
+            </section>
+
+        </form>
+
+    </aside>
+</div>
