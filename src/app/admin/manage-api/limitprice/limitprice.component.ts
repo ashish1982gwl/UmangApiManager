@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { ApiListService } from './../api-list/api-list.service';
-import { GrdFilterPipe } from '../../../GlobalServices/filter/grd-filter.pipe';
+import { CustomApiManagerFormGroupFilter } from '../../../GlobalServices/filter/formGroupFilter.pipe';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
@@ -21,32 +21,36 @@ export class LimitpriceComponent implements OnInit {
   errorMessage: string;
   limitPriceForm: FormGroup;
   itemRows: FormArray;
+
+
   createForm() {
     this.limitPriceForm = this.formBuilder.group({
       'searchText': [''],
-      itemRows: this.formBuilder.array([this.initItemRows()])
+      itemRows: this.formBuilder.array([])
     })
   }
-  initItemRows() {
+  initItemRows(id, name, freeHits, prices, freeHitsUnit_day_month, freeHitsUnit_limit) {
     return this.formBuilder.group({
-      'freeHits': [''],
-      'freeHitsUnit_day_month': '',
-      'freeHitsUnit_limit': '',
-      'prices': ''
+      'id': id,
+      'name': name,
+      'freeHits': freeHits,
+      'freeHitsUnit_day_month': freeHitsUnit_day_month,
+      'freeHitsUnit_limit': freeHitsUnit_limit,
+      'prices': prices
     });
- }
- 
- addNewRow() {
-     const control = <FormArray>this.limitPriceForm.controls['itemRows'];
-     console.log('----------------------------------------')
-     control.push(this.initItemRows());
- }
- 
- deleteRow(index: number) {
-     const control = <FormArray>this.limitPriceForm.controls['itemRows'];
-     control.removeAt(index);
- }
-  
+  }
+
+  addNewRow(id, name, freeHits, prices, freeHitsUnit_day_month, freeHitsUnit_limit) {
+    const control = <FormArray>this.limitPriceForm.controls['itemRows'];
+    console.log('----------------------------------------')
+    control.push(this.initItemRows(id, name, freeHits, prices, freeHitsUnit_day_month, freeHitsUnit_limit));
+  }
+
+  deleteRow(index: number) {
+    const control = <FormArray>this.limitPriceForm.controls['itemRows'];
+    control.removeAt(index);
+  }
+
   constructor(
 
     private apiListService: ApiListService,
@@ -60,8 +64,10 @@ export class LimitpriceComponent implements OnInit {
     this.apiListService.getListByDepartment(deptName)
       .subscribe(
         response => {
-         // this.data = this.parseJsonServiceAndVersionWise(response, this.deptName);
-          this.data = [ { "department": "CBSE", "services": [ { "name": "10th_result", "ApiVersion": [ { "freeHits": 100, "freeHitsUnit_day_month": "month", "freeHitsUnit_limit": "10000", "id": "e51d21f5-877e-46c3-b9ce-49a30a050875", "prices": 0.01 } ] }, { "name": "12_result", "ApiVersion": [ { "freeHits": 100, "freeHitsUnit_day_month": "DaY", "freeHitsUnit_limit": "1000", "id": "31bb9ba7-6ec4-4041-8517-46a77c8d23d6", "prices": 0.01 } ] } ] } ];
+           let temp = {"statusInfo":{"status":"S","errorDescription":"Success.","errorCode":100},"data":[{"id":"e51d21f5-877e-46c3-b9ce-49a30a050875","name":"10th_result","department":"CBSE","version":"1.0.0","stgAvilable":true,"proAvilable":true,"status":"PUBLISHED","expDate":null,"freeHits":100,"prices":0.01,"freeHitsUnit":null,"defaultTiers":"Unlimited"},{"id":"31bb9ba7-6ec4-4041-8517-46a77c8d23d6","name":"12_result","department":"CBSE","version":"1.0.0","stgAvilable":true,"proAvilable":true,"status":"PUBLISHED","expDate":null,"freeHits":100,"prices":0.01,"freeHitsUnit":"1000/day","defaultTiers":"Unlimited"}]};
+           this.data = this.parseJsonServiceAndVersionWise(response, this.deptName);
+         //this.data = this.parseJsonServiceAndVersionWise(temp, this.deptName);
+
         },
         error => {
           this.error = error;
@@ -73,6 +79,7 @@ export class LimitpriceComponent implements OnInit {
     this.deptName = localStorage.getItem('AdminVistedDept');
     this.getDepartmentList(this.deptName);
     this.createForm();
+
     console.log(this.data);
   }
 
@@ -90,7 +97,7 @@ export class LimitpriceComponent implements OnInit {
   }
 
 
-  
+
   parseJsonServiceAndVersionWise(array, deptName) {
     let finalJson = [];
     let serviceJson = [];
@@ -113,6 +120,7 @@ export class LimitpriceComponent implements OnInit {
               'name': service.name,
               'ApiVersion': serviceVesrionJson
             })
+            this.addNewRow(service.id,service.name,service.freeHits, service.prices, this.getFreeHitUnitDayMonth(service.freeHitsUnit), this.getFreeHitUnitValue(service.freeHitsUnit));
           } else {
             /*serviceJson[index].version.push({
               'freeHits': service.freeHits,
@@ -219,7 +227,7 @@ export class LimitpriceComponent implements OnInit {
     let arr = JSON.parse(formValue);
     console.log(arr);
     for (let key in arr) {
-     // console.log('id: ' + key + '  value: ' + arr[key]);
+      // console.log('id: ' + key + '  value: ' + arr[key]);
     }
   }
 }

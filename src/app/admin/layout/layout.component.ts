@@ -10,6 +10,9 @@ export class LayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    //localStorage.getItem('AdminVistedDept')
+    //localStorage.clear();
+
   }
   linkClickAction(pageName) {
     this.linkCss = pageName;

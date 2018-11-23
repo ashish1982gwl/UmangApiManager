@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from "@angular/router";
 import { ToastrService } from 'ngx-toastr';
 import { LoginService } from './login.service';
@@ -14,7 +14,7 @@ import { LoginService } from './login.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  lodingFlag :boolean=false;
+  lodingFlag: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       'email':
         [null, [Validators.required, Validators.minLength(4),
-        Validators.maxLength(30), Validators.email]],
+        Validators.maxLength(30), Validators.email, this.emailDomainValidator]],
       'password':
         [null, [Validators.required, Validators.minLength(4),
         Validators.maxLength(30)]],
@@ -40,20 +40,27 @@ export class LoginComponent implements OnInit {
   }
 
   submitLoginFrom() {
-    this.lodingFlag=true;
+    this.lodingFlag = true;
     let email = this.loginForm.get('email').value;
     let password = this.loginForm.get('password').value;
     this.loginService.getLogin(email, password)
       .subscribe(
         response => {
-          this.lodingFlag=false;
+          this.lodingFlag = false;
           this.getResponseParser(response);
         },
         error => {
-          this.lodingFlag=false;
+          this.lodingFlag = false;
           this.getErrorMessage();
         });
 
+  }
+  emailDomainValidator(control: FormControl) {
+    let email = control.value;
+   const emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"; 
+  // if(email!=null){
+   // console.log(emailPattern.test(email));
+   //}
   }
   getResponseParser(resp) {
     //{"statusInfo":{"status":"F","errorDescription":"Invalid credentials","errorCode":127},"data":null}
@@ -66,7 +73,6 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('access_token', successData.access_token);
       if (!successData.isPasswordUpdate) {
         this.goChangePasswordPage();
-        //return;
       }
       if (successData.authorities === 'ADMIN') {
         this.router.navigate(['admin/dashboard/default']);

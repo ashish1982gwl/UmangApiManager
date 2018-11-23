@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import * as myGlobals from '../GlobalServices/Globals';
+import { isError } from 'util';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +11,7 @@ import * as myGlobals from '../GlobalServices/Globals';
 export class RegisterComponent implements OnInit {
   tabValue: boolean = true;
   registerForm: FormGroup;
-  
+
   countries = ['USA', 'Canada', 'Uk']
 
 
@@ -35,39 +36,53 @@ export class RegisterComponent implements OnInit {
   createForm() {
     this.registerForm = this.formBuilder.group({
       'companyname':
-        [null, [Validators.required, Validators.minLength(4),
-        Validators.maxLength(10)]],
-      'RequesterName': [null, [Validators.required, Validators.minLength(4),
-      Validators.maxLength(10)]],
-      'Designation': [null, [Validators.required, Validators.minLength(4),
-      Validators.maxLength(10)]],
+        [null, [Validators.required, Validators.minLength(3),
+        Validators.maxLength(30)]],
+      'RequesterName': [null, [Validators.required, Validators.minLength(3),
+      Validators.maxLength(30)]],
+      'Designation': [null],
       'OfficialEmailID': [null, [Validators.required, Validators.minLength(4),
-      Validators.maxLength(20),
+      Validators.maxLength(80),
       Validators.email]],
       'MobileNumber': [null, [Validators.required, Validators.minLength(4),
       Validators.maxLength(10)]],
       'PurposeOfservice': [null, [Validators.required, Validators.minLength(4),
-      Validators.maxLength(10)]],
+      Validators.maxLength(30)]],
       'OrganisationType': [null],
-      'PaidService': [null, [Validators.required, Validators.minLength(4),
-      Validators.maxLength(10)]],
-      'ProductionIPaddress': [null, [Validators.required, Validators.minLength(4),
-      Validators.maxLength(10)]],
-      'StagingIpAddress': [null, [Validators.required, Validators.minLength(4),
-      Validators.maxLength(10)]],
+      /* 'PaidService': [null, [Validators.required, Validators.minLength(4),
+       Validators.maxLength(10)]],
+       'ProductionIPaddress': [null, [Validators.required, Validators.minLength(4),
+       Validators.maxLength(10)]],
+       'StagingIpAddress': [null, [Validators.required, Validators.minLength(4),
+       Validators.maxLength(10)]],*/
       'FunctioanlSpocName': [null, [Validators.required, Validators.minLength(4),
       Validators.maxLength(10)]],
       'FunctioanlSpocEmailId': [null, [Validators.required, Validators.minLength(4),
-      Validators.maxLength(20), Validators.email]],
+      Validators.maxLength(80), Validators.email]],
       'FunctioanlMobileNumber': [null, [Validators.required, Validators.minLength(4),
       Validators.maxLength(10)]],
       'TechSpocName': [null, [Validators.required, Validators.minLength(4),
       Validators.maxLength(10)]],
       'TechSpocEmailId': [null, [Validators.required, Validators.minLength(4),
-      Validators.maxLength(10)]],
+      Validators.maxLength(80)]],
       'TechopsMobileNumber': [null, [Validators.required, Validators.minLength(4),
       Validators.maxLength(10)]],
     });
   }
+  emailDomainValidator(control: FormControl) {
+    let email = control.value;
+    if (email && email.indexOf("@") != -1) {
+      return {
+         isError: true 
+        };
+    }
+    if (email && (email.indexOf(".com") != -1)||(email.indexOf(".in") != -1)) {
+      return {
+         isError: true 
+        };
+    }
+    return null;
+  }
+
   // [hidden]="!tabValue"
 }

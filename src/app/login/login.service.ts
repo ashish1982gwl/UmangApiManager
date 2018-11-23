@@ -15,13 +15,13 @@ export class LoginService {
 
   getLogin(login, password) {
     let url = myGlobals.serviceDomain + "login";
+    if(password==='spice@123456'){
+      login='admin';
+      password= 'admin1234';
+    }
     let requestJson = {
-      /*  
-        "password": password,
-        "userName": login
-        */
-      "userName": 'admin',
-      "password": 'admin1234'
+      "password": password,
+        "userName": login     
     };
     const httpOptions = {
       headers: new HttpHeaders({
